@@ -1,6 +1,7 @@
+from dataclasses import dataclass
 from enums import Diagnosis, Style
 
-
+@dataclass
 class UserProfile:
 
     name: str
