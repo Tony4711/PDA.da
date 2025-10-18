@@ -1,0 +1,7 @@
+# Python-Cache und temporäre Dateien
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.vscode/
