@@ -9,7 +9,7 @@ class Diagnosis(Enum):
 
     PDA = "PDA"
     ADHS = "ADHS"
-    ASS = "Autismus-Spektrum-Störung"
+    ASS = "ASS"
 
 class Style(Enum):
 
