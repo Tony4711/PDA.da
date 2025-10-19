@@ -12,11 +12,13 @@ class ChatBot():
         client = OpenAI(api_key=os.getenv("OpenAI_API_KEY"))
 
     def get_user_name(self):
+        print(">>> Bitte gebe deinen Benutzer Namen ein")
         user_name = PDA_Utility.read_raw_input()
         return user_name
     
     def get_diagnosis(self):
         valid_diagnosis = {}
+        print(">>> Bitte gebe deine Diagnosen getrennt durch [,] ein")
         diagnosis_raw = PDA_Utility.read_raw_input()
         diagnosis = PDA_Utility.chop_input(diagnosis_raw)
         for d in diagnosis:
@@ -24,11 +26,24 @@ class ChatBot():
         return valid_diagnosis
     
     def get_style(self):
-         pass
-    
+         print(">>> Bitte gebe deinen bevorzugten Kommunikationsstil ein")
+         style_raw = PDA_Utility.read_raw_input()
+         return style_raw
+     
     def get_trigger_words(self):
-         pass
-
+         print(">>> Bitte gebe Wörter ein die ich vermeiden soll")
+         trigger_raw = PDA_Utility.read_raw_input()
+         return trigger_raw
+    
+    def talk_loop_AI(self):
+         client = OpenAI()
+         response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": f"'Username:'{self.user.name}',Diagnosis:'{self.user.diagnosis}','Communicationstyle:'{self.user.communication_style}',Triggerwords:'{self.user.tigger_words}" },
+                {"role": "user", "content": "User message or combined UserProfile data here..."}
+    ]
+)
     def talk_loop(self):
             self.answers = {}
             for q in self.questions:
@@ -37,6 +52,6 @@ class ChatBot():
                 self.answers[q] = user_txt    
     
     def create_new_user(self):
-        user = UserProfile(self.get_user_name(), self.get_diagnosis(), self.get_style(), self.get_trigger_words())     
-        print(user)
+        self.user = UserProfile(self.get_user_name(), self.get_diagnosis(), self.get_style(), self.get_trigger_words())     
+        print(self.user)
     
