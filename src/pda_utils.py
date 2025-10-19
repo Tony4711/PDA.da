@@ -5,7 +5,8 @@ import readchar
 class PDA_Utility:
 
     def read_raw_input():
-         raw_input = input(f"[{Chatter.USER.value}]: ")
+         raw_input = input(">>> ")
+         print()
          return raw_input
     
     def chop_input(raw_input):
