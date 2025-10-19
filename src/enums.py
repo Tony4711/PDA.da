@@ -11,7 +11,7 @@ class Diagnosis(Enum):
     ADHS = "ADHS"
     ASS = "ASS"
 
-class Style(Enum):
+class BaseStyle(Enum):
 
     CALM = "ruhig"
     PANDA = "Kämpfe weise auswählen, Angstmanagement, Verhandlung & Zusammenarbeit, Anforderungen verschleiern & managen, Anpassung"
