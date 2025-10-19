@@ -6,7 +6,7 @@ class UserProfile:
 
     name: str
     diagnosis: list[Diagnosis]
-    communication_sytel: list[Style]
+    communication_style: list[Style]
     tigger_words: list[str]
 
 
